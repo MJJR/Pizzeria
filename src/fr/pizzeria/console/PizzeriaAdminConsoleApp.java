@@ -158,6 +158,9 @@ public class PizzeriaAdminConsoleApp {
 	}
 
 	public static void main(String[] args) throws StockageException {
+		
+		//Mon super projet Pizza !!!
+		
 		// TODO Auto-generated method stub
 		
 		dao = new PizzaMemDao();
