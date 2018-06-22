@@ -13,17 +13,17 @@ public class PizzaMemDaoTest {
 
 		PizzaMemDao test = new PizzaMemDao();
 
-		Pizza pizza = new Pizza("LOL", "C'est trop drÙle", 42.00, CategoriePizza.SANS_VIANDE);
+		Pizza pizza = new Pizza("LOL", "C'est trop dr√¥le", 42.00, CategoriePizza.SANS_VIANDE);
 		
 		int lenght = test.getTableau().size();
 		
 		test.saveNewPizza(pizza);
 		
-		Assert.assertEquals("Le Premier test (1/3) a ÈchouÈ", lenght+1, test.getTableau().size());
+		Assert.assertEquals("Le Premier test (1/3) √† √©chou√©", lenght+1, test.getTableau().size());
 
-		Assert.assertEquals("Le Premier test (2/3) a ÈchouÈ", pizza, test.getTableau().get(lenght));
+		Assert.assertEquals("Le Premier test (2/3) √† √©chou√©", pizza, test.getTableau().get(lenght));
 		
-		Assert.assertEquals("Le Premier test (3/3) a ÈchouÈ",true,test.getTableau().contains(pizza));
+		Assert.assertEquals("Le Premier test (3/3) √† √©chou√©",true,test.getTableau().contains(pizza));
 	}
 
 	@Test
@@ -31,12 +31,12 @@ public class PizzaMemDaoTest {
 
 		PizzaMemDao test = new PizzaMemDao();
 
-		Pizza pizza = new Pizza("LOL", "C'est trop drÙle", 42.00, CategoriePizza.SANS_VIANDE);
+		Pizza pizza = new Pizza("LOL", "C'est trop dr√¥le", 42.00, CategoriePizza.SANS_VIANDE);
 
 		test.updatePizza("FRO", pizza);
 		
 		//La pizza "FRO" est l'identifiant 3 dans PizzaMemDao
-		Assert.assertEquals("Le DeuxiËme test a ÈchouÈ", pizza, test.getTableau().get(3));
+		Assert.assertEquals("Le Deuxi√®me test a √† √©chou√©", pizza, test.getTableau().get(3));
 
 	}
 
@@ -49,7 +49,7 @@ public class PizzaMemDaoTest {
 
 		test.deletePizza("CAN");
 		
-		Assert.assertNotEquals("Le TroisiËme test a ÈchouÈ",true, test.getTableau().contains(pizza));
+		Assert.assertNotEquals("Le Troisi√®me test a √©chou√©",true, test.getTableau().contains(pizza));
 
 	}
 
@@ -59,9 +59,9 @@ public class PizzaMemDaoTest {
 
 		Pizza pizza = new Pizza("ORI", "L'orientale", 13.50, CategoriePizza.VIANDE);
 
-		Assert.assertEquals("Le QuatriËme test a ÈchouÈ", pizza, test.findPizzaByCode("ORI"));
+		Assert.assertEquals("Le Quatri√®me test a√©chou√©", pizza, test.findPizzaByCode("ORI"));
 
-		Assert.assertEquals("Le CinquiËme test a ÈchouÈ", null, test.findPizzaByCode("LOL"));
+		Assert.assertEquals("Le Cinqui√®me test a √©chou√©", null, test.findPizzaByCode("LOL"));
 
 	}
 
@@ -69,9 +69,9 @@ public class PizzaMemDaoTest {
 	public void testPizzaExists() {
 		PizzaMemDao test = new PizzaMemDao();
 
-		Assert.assertEquals("Le QuatriËme test a ÈchouÈ", true, test.pizzaExists("ORI"));
+		Assert.assertEquals("Le Quatri√®me test a √©chou√©", true, test.pizzaExists("ORI"));
 
-		Assert.assertEquals("Le CinquiËme test a ÈchouÈ", false, test.pizzaExists("LOL"));
+		Assert.assertEquals("Le Cinqui√®me test a √©chou√©", false, test.pizzaExists("LOL"));
 	}
 
 }

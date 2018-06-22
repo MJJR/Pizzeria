@@ -1,16 +1,19 @@
 package fr.pizzeria.console;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import fr.pizza.dao.IPizzaDao;
 import fr.pizza.dao.PizzaMemDao;
 import fr.pizza.exception.SavePizzaException;
+import fr.pizza.exception.StockageException;
 import fr.pizza.model.CategoriePizza;
 import fr.pizza.model.Pizza;
 
 public class AjouterPizzaService extends MenuService {
 	
-	public void executeUC(int i, ArrayList<Pizza> tab, Scanner sc, PizzaMemDao dao) throws SavePizzaException{
+	public void executeUC(int i, List<Pizza> tab, Scanner sc, IPizzaDao dao) throws SavePizzaException{
 		
 		String code,lib,categorie;
 		double prix;
@@ -23,7 +26,7 @@ public class AjouterPizzaService extends MenuService {
 		else {
 			System.out.println("Veuillez saisir le nom : \n");
 		
-			//On vide la ligne pour éviter des problèmes avec nextLine
+			//On vide la ligne pour ï¿½viter des problï¿½mes avec nextLine
 			sc.nextLine();
 		
 			lib = sc.nextLine();
@@ -31,9 +34,9 @@ public class AjouterPizzaService extends MenuService {
 			System.out.println("Veuillez saisir le prix : \n");
 			prix = sc.nextDouble();
 			
-			System.out.println("Veuillez saisir la catégorie de la Pizza :");
+			System.out.println("Veuillez saisir la catï¿½gorie de la Pizza :");
 			
-			//On vide la ligne pour éviter des problèmes avec nextLine
+			//On vide la ligne pour ï¿½viter des problï¿½mes avec nextLine
 			sc.nextLine();
 			
 			categorie = sc.nextLine();

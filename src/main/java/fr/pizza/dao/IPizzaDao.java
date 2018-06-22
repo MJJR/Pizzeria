@@ -1,10 +1,13 @@
 package fr.pizza.dao;
 
-import java.awt.List;
+import java.util.List;
 import fr.pizza.model.Pizza;
 
-public interface IPizzaDao {
-	
+/**
+ * @author matth
+ *
+ */
+public interface IPizzaDao { 
 	List findAllPizzas();
 	void saveNewPizza(Pizza pizza);
 	void updatePizza(String code,Pizza pizza);

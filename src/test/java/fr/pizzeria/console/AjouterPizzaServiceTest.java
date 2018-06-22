@@ -19,7 +19,7 @@ import fr.pizza.model.Pizza;
 public class AjouterPizzaServiceTest {
 
 	/**
-	 * Création d'une "Rule" qui va permettre de substituer le System.in utilisé
+	 * Crï¿½ation d'une "Rule" qui va permettre de substituer le System.in utilisï¿½
 	 * par le Scanner par un mock: systemInMock
 	 */
 	@Rule
@@ -30,13 +30,13 @@ public class AjouterPizzaServiceTest {
 		
 		PizzaMemDao dao = new PizzaMemDao();
 		Scanner scn = new Scanner(System.in);
-		Pizza pizza = new Pizza("LOL", "C'est trop drôle", 42.0, CategoriePizza.SANS_VIANDE);
+		Pizza pizza = new Pizza("LOL", "C'est trop drÃ´le", 42.0, CategoriePizza.SANS_VIANDE);
 
-		// J'alimente le mock avec les valeurs ""pour un debug "LOL","C'est trop drôle","42", ""pour encore un debug ,"sans viande"
-		systemInMock.provideLines("LOL","C'est trop drôle","42,0","Sans Viande");
+		// J'alimente le mock avec les valeurs "LOL","C'est trop drï¿½le","42","sans viande"
+		systemInMock.provideLines("LOL","C'est trop drÃ´le","42,0","Sans Viande");
 		AjouterPizzaService serv = new AjouterPizzaService();
 		serv.executeUC(0, dao.getTableau(), scn, dao);
-		assertEquals("Premier Test a échoué", pizza , dao.getTableau().get(  dao.getTableau().size()-1  ));
+		assertEquals("Premier Test a Ã©chouÃ©", pizza , dao.getTableau().get(  dao.getTableau().size()-1  ));
 		
 		scn.close();
 	}

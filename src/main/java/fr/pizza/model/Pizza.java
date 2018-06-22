@@ -6,7 +6,7 @@ import fr.pizza.utils.ToString;
 
 public class Pizza {
 	
-	static int nbPizza = 0;
+	public static int nbPizza = 0;
 	public int id;
 	
 	@ToString(separator = "->", upperCase=false)
@@ -49,7 +49,7 @@ public class Pizza {
 		
 		
 		String res ="";
-		res += this.code + " -> " + this.libelle + "(" + this.prix + " Ä) " + "catÈgorie : "+this.categorie;
+		res += this.code + " -> " + this.libelle + "(" + this.prix + " ) " + "cat√©gorie : "+this.categorie;
 		return res;
 		
 	}

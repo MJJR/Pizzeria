@@ -1,23 +1,31 @@
 package fr.pizza.dao;
 
-import java.awt.List;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import fr.pizza.model.CategoriePizza;
 import fr.pizza.model.Pizza;
 
+/**
+ * @author matth
+ *
+ */
 public class PizzaMemDao implements IPizzaDao {
-	
-	//private Pizza tableau[];
-	private List listeCode = new List();
+
+	/** 
+	* tableau : ArrayList<Pizza> 
+	*/
 	private ArrayList<Pizza> tableau = new ArrayList<Pizza>();
 	
 
+	/**
+	 * 
+	 */
 	public PizzaMemDao(){
 		
 		
-		tableau.add( new Pizza("PEP","Pépéroni",12.50,CategoriePizza.VIANDE) );
+		tableau.add( new Pizza("PEP","Pï¿½pï¿½roni",12.50,CategoriePizza.VIANDE) );
 		tableau.add( new Pizza("MAR","Margherita",14.00,CategoriePizza.SANS_VIANDE) );
 		tableau.add( new Pizza("REIN","La reine",11.50,CategoriePizza.VIANDE) );
 		tableau.add( new Pizza("FRO","La 4 fromages",12.00,CategoriePizza.SANS_VIANDE) );
@@ -25,40 +33,39 @@ public class PizzaMemDao implements IPizzaDao {
 		tableau.add( new Pizza("SAV","La savoyarde",13.00,CategoriePizza.VIANDE) );
 		tableau.add( new Pizza("ORI","L'orientale",13.50,CategoriePizza.VIANDE) );
 		tableau.add( new Pizza("IND","L'indienne",14.00,CategoriePizza.VIANDE) );
-		
-		//Pizza aux[] = {pep,mar,rein,fro,can,sav,ori,ind};
-		//this.tableau = aux;
+
 		
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see fr.pizza.dao.IPizzaDao#findAllPizzas()
+	 */
 	public List findAllPizzas() {
 		// TODO Auto-generated method stub
-		return this.listeCode;
+		return getTableau();
 	}
 
+	/** Fonction :  
+	 * @return
+	 */
 	public ArrayList<Pizza> getTableau(){
 		return this.tableau;
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see fr.pizza.dao.IPizzaDao#saveNewPizza(fr.pizza.model.Pizza)
+	 */
 	@Override
 	public void saveNewPizza(Pizza pizza) {
 		// TODO Auto-generated method stub
-		/*
-		Pizza aux[] = new Pizza[findAllPizza().length+1];
-		
-		for(int i=0;i<findAllPizza().length;i++) {
-			aux[i] = findAllPizza()[i];
-		}
-		
-		aux[findAllPizza().length] = pizza;
-		
-		setTableau(aux);
-		*/
 		getTableau().add(pizza);
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.pizza.dao.IPizzaDao#updatePizza(java.lang.String, fr.pizza.model.Pizza)
+	 */
 	@Override
 	public void updatePizza(String code, Pizza pizza) {
 		// TODO Auto-generated method stub
@@ -68,72 +75,29 @@ public class PizzaMemDao implements IPizzaDao {
 		this.findPizzaByCode(code).prix = pizza.prix;
 		this.findPizzaByCode(code).categorie = pizza.categorie;
 		
-		//On modifie le code à la toute fin sinon bug !!!
+		//On modifie le code ï¿½ la toute fin sinon bug !!!
 		this.findPizzaByCode(code).code = pizza.code;
 
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.pizza.dao.IPizzaDao#deletePizza(java.lang.String)
+	 */
 	@Override
 	public void deletePizza(String code) {
 		// TODO Auto-generated method stub
 		
-		/*
-		Pizza aux[] = new Pizza[findAllPizza().length-1];
-		boolean trouve = false;
-		int i=0;
-		
-		while(!trouve && i<findAllPizza().length) {
-			if(code.equals(findAllPizza()[i].code)) {
-				trouve = true;
-			}
-			else i++;
-		}
-		
-		if(trouve) {
-
-			int j=0;
-			while(j<i) {
-				aux[j]=findAllPizza()[j];
-				j++;
-			}
-			while(j+1<findAllPizza().length) {
-				aux[j]=findAllPizza()[j+1];
-				j++;
-			}
-			
-		}
-		else System.out.println("Nous n'avons pas trouvés votre pizza.");
-		
-
-		setTableau(aux);
-		*/
 		getTableau().remove(findPizzaByCode(code));
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.pizza.dao.IPizzaDao#findPizzaByCode(java.lang.String)
+	 */
 	@Override
 	public Pizza findPizzaByCode(String code) {
 		// TODO Auto-generated method stub
 		
-		//System.out.println("DEBUG : code = "+code);
-		
-		/*
-		boolean trouve = false;
-		int i=0;
-		
-		
-		while(!trouve && i<findAllPizza().length) {
-			//System.out.println("DEBUG : i = "+i);
-			if(code.equals(findAllPizza()[i].code)) {
-				trouve = true;
-			}
-			else i++;
-		}
-		
-		//System.out.println("DEBUG : i = "+i);
-		return findAllPizza()[i];
-		
-		*/
 		boolean trouve = false;
 		Pizza aux = null;
 		
@@ -146,23 +110,13 @@ public class PizzaMemDao implements IPizzaDao {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.pizza.dao.IPizzaDao#pizzaExists(java.lang.String)
+	 */
 	@Override
 	public boolean pizzaExists(String codePizza) {
 		// TODO Auto-generated method stub
-		/*
-		boolean trouve = false;
-		int i=0;
 		
-		
-		while(!trouve && i<findAllPizza().length) {
-			if(codePizza.equals(findAllPizza()[i].code)) {
-				trouve = true;
-			}
-			else i++;
-		}
-		
-		return trouve;
-		*/
 		boolean trouve = false;
 		Pizza aux;
 		
