@@ -2,24 +2,44 @@ package fr.pizza.model;
 
 import java.lang.reflect.Field;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import fr.pizza.utils.ToString;
 
+@Entity
+@Table(name="Pizza")
 public class Pizza {
 	
-	public static int nbPizza = 0;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int id;
 	
 	@ToString(separator = "->", upperCase=false)
+	@Column(name = "CODE",length = 4, nullable = false, unique = true)
 	public String code;
 	
 	@ToString(upperCase=true)
+	@Column(name = "LIBELLE",length = 50, nullable = false, unique = false)
 	public String libelle;
+	
+	@Column(name = "PRIX", nullable = false, unique = false)
 	public double prix;
+	
+	@Embedded
 	public CategoriePizza categorie;
+	
+	public Pizza(){
+		
+	}
 	
 	public Pizza(String c,String l,double p,CategoriePizza cp) {
 		
-		this.id = nbPizza++;
 		this.code = c;
 		this.libelle = l;
 		this.prix = p;
@@ -100,6 +120,79 @@ public class Pizza {
 			return false;
 		return true;
 	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the code
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * @param code the code to set
+	 */
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	/**
+	 * @return the libelle
+	 */
+	public String getLibelle() {
+		return libelle;
+	}
+
+	/**
+	 * @param libelle the libelle to set
+	 */
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	/**
+	 * @return the prix
+	 */
+	public double getPrix() {
+		return prix;
+	}
+
+	/**
+	 * @param prix the prix to set
+	 */
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+	/**
+	 * @return the categorie
+	 */
+	public CategoriePizza getCategorie() {
+		return categorie;
+	}
+
+	/**
+	 * @param categorie the categorie to set
+	 */
+	public void setCategorie(CategoriePizza categorie) {
+		this.categorie = categorie;
+	}
+	
+	
+	
 	
 
 }

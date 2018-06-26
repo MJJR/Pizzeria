@@ -1,9 +1,15 @@
 package fr.pizza.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public enum CategoriePizza {
 	VIANDE("Viande"), POISSON("Poisson"), SANS_VIANDE("Sans Viande");
 	
+	@Column(name = "CATEGORIE", length = 50 , nullable = false, unique = false)
 	private String nom;
+	
 	private CategoriePizza(String nom) { 
 		this.nom = nom;
 	}

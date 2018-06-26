@@ -17,9 +17,9 @@ public class PizzaJdbcDao implements IPizzaDao {
 
 	private Connection myConnection;
 
+	
 	/**
-	 * Fonction :
-	 * 
+	 * Constructor of PizzaJdbcDao.java
 	 */
 	public PizzaJdbcDao() {
 		
@@ -40,7 +40,7 @@ public class PizzaJdbcDao implements IPizzaDao {
 
 			if (resultats.next()) {
 				Integer id = resultats.getInt("max");
-				Pizza.nbPizza = id++;
+				//Pizza.nbPizza = id++;
 			}
 
 		} catch (ClassNotFoundException classE) {
@@ -143,7 +143,7 @@ public class PizzaJdbcDao implements IPizzaDao {
 		try {
 			statement = getMyConnection().createStatement();
 			String requete = "INSERT INTO Pizzas (id, code, libelle, prix, categorie) VALUES (";
-			requete += "" + Pizza.nbPizza++ + " , '" + pizza.code + "' , '" + pizza.libelle + "' , " + pizza.prix
+			requete += "" + /*Pizza.nbPizza++ +*/ " , '" + pizza.code + "' , '" + pizza.libelle + "' , " + pizza.prix
 					+ " , '" + pizza.categorie + "')";
 
 			int resRequete = statement.executeUpdate(requete);
