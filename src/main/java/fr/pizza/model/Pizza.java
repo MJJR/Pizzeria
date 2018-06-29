@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +33,7 @@ public class Pizza {
 	@Column(name = "PRIX", nullable = false, unique = false)
 	public double prix;
 	
-	@Embedded
+	@Enumerated(EnumType.STRING)
 	public CategoriePizza categorie;
 	
 	public Pizza(){

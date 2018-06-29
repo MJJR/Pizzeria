@@ -65,7 +65,7 @@ public class PizzaJpaDao implements IPizzaDao {
 		EntityTransaction et = getEm().getTransaction();
 		et.begin();
 		
-		Query query = getEm().createQuery(" SELECT Pizza FROM Pizza ");
+		Query query = getEm().createQuery(" SELECT p FROM Pizza p ");
 		List<Pizza> res = query.getResultList();
 		
 		et.commit();
@@ -86,14 +86,13 @@ public class PizzaJpaDao implements IPizzaDao {
 	@Override
 	public void updatePizza(String code, Pizza pizza) {
 		// TODO Auto-generated method stub
+		Pizza vieuxPizza = findPizzaByCode(code);
+		
 		EntityTransaction et = getEm().getTransaction();
 		et.begin();
 		
-		Pizza vieuxPizza = findPizzaByCode(code);
-		
 		vieuxPizza.categorie = pizza.categorie;
 		vieuxPizza.libelle = pizza.libelle;
-		vieuxPizza.id = pizza.id;
 		vieuxPizza.prix = pizza.prix;
 		vieuxPizza.code = pizza.code;
 		
@@ -103,10 +102,10 @@ public class PizzaJpaDao implements IPizzaDao {
 	@Override
 	public void deletePizza(String code) {
 		// TODO Auto-generated method stub
+		Pizza vieuxPizza = findPizzaByCode(code);
+		
 		EntityTransaction et = getEm().getTransaction();
 		et.begin();
-		
-		Pizza vieuxPizza = findPizzaByCode(code);
 		getEm().remove(vieuxPizza);
 		
 		et.commit();

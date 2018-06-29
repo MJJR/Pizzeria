@@ -1,11 +1,11 @@
 package fr.pizzeria.console;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import fr.pizza.dao.IPizzaDao;
 import fr.pizza.dao.PizzaJdbcDao;
-import fr.pizza.dao.PizzaMemDao;
+import fr.pizza.dao.PizzaJpaDao;
 import fr.pizza.exception.StockageException;
 import fr.pizza.model.Pizza;
 
@@ -14,7 +14,7 @@ public class PizzeriaAdminConsoleApp {
 
 	static boolean enCours = true;
 	//static PizzaMemDao dao;
-	static PizzaJdbcDao dao;
+	static IPizzaDao dao;
 	static MenuServiceFactory choix = new MenuServiceFactory();
 	
 	/**
@@ -66,8 +66,8 @@ public class PizzeriaAdminConsoleApp {
 		
 		
 		//dao = new PizzaMemDao();
-		dao = new PizzaJdbcDao();
-		
+		//dao = new PizzaJdbcDao();
+		dao = new PizzaJpaDao();
 		
 		Scanner saisie = new Scanner(System.in);
 		int choix;
